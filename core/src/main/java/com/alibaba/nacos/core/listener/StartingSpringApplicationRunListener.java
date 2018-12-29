@@ -24,6 +24,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.Ordered;
 import org.springframework.core.env.ConfigurableEnvironment;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
@@ -110,7 +111,7 @@ public class StartingSpringApplicationRunListener implements SpringApplicationRu
 
         logFilePath();
 
-        LOGGER.error("Nacos failed to start, please see {}/logs/nacos.log for more details.", NACOS_HOME);
+        LOGGER.error("Nacos failed to start, please see {}{}logs{}nacos.log for more details.", NACOS_HOME, File.separator, File.separator);
     }
 
     /**
@@ -135,9 +136,9 @@ public class StartingSpringApplicationRunListener implements SpringApplicationRu
     }
 
     private void logFilePath() {
-        LOGGER.info("Nacos Log files: {}/logs/", NACOS_HOME);
-        LOGGER.info("Nacos Conf files: {}/conf/", NACOS_HOME);
-        LOGGER.info("Nacos Data files: {}/data/", NACOS_HOME);
+        LOGGER.info("Nacos Log files: {}{}logs{}", NACOS_HOME, File.separator, File.separator);
+        LOGGER.info("Nacos Conf files: {}{}conf{}", NACOS_HOME, File.separator, File.separator);
+        LOGGER.info("Nacos Data files: {}{}data{}", NACOS_HOME, File.separator, File.separator);
     }
 
     private void logStarting() {
